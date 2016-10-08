@@ -2,9 +2,13 @@ name: inverse
 layout: true
 class: center, middle, inverse
 ---
-# Polarizable Continuum Model: from Theory to Implementation using PCMSolver
+.title[Polarizable Continuum Model]
 
-.author[Roberto Di Remigio]
+.subtitle[From Theory to Implementation using PCMSolver]
+
+.author[Roberto Di Remigio, ] .coauthor[Luca Frediani]
+
+.institution[UiT -- The Arctic University of Norway]
 
 .date[10 October 2016, Wuhan]
 
@@ -41,26 +45,56 @@ layout: false
 ???
 
 ---
-## The Problem of Solvation
+layout: false
+class: split-60
 
-- Surface enhanced spectroscopies
-- Challenging environments
-- QM/MM only recently, for planar interfaces
-- Continuum approach: consider a spatially varying permittivity
+## Quantum Chemistry
 
-<div class="imageWrapper">
-  <img class="overlayImage" src="images/spherical_diffuse.jpg" style="width: 80%" align="middle">
---
-  <img class="overlayImage" src="images/paper.png" style="width: 110%" align="middle">
-</div>
-<p style="clear: both;">
+.column[
+- Quantum many-body theory applied to chemistry
+
+`$$
+H\Psi = E\Psi
+$$`
+
+]
+.column[
+<p style="text-align:center;"><img src="images/model-chem.svg" style="width: 40%"></p>
+]
 
 ???
 
-- Interfaces are ubiquitous
-- We want to be able to treat chemistry and physics at interfaces, e.g.
-  adsorption phenomena, surface enhanced spectroscopies.
-- Some spectroscopic phenomena are relevant in symmetry-broken environments (SHG)
+---
+layout: false
+class: split-50
+## The Problem of Solvation
+
+.column[
+<font color="red">
+Solvent effects
+</font>
+- Direct
+- Indirect
+- Local field
+- Dynamic
+- Specific
+]
+.column[
+<p style="text-align:center;"><img src="images/pyridine+water_12AA_QM.png" style="width: 45%"></p>
+]
+
+<font color="red">
+Problems
+</font>
+
+- Size
+- Conformations
+
+<font color="red">
+<center>We need to simplify!!!</center>
+</font>
+
+???
 
 ---
 ## Polarizable continuum model.red[<sup>1</sup>]
