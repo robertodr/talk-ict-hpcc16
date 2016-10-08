@@ -41,7 +41,7 @@ layout: false
 ???
 
 ---
-## Diffuse interfaces
+## The Problem of Solvation
 
 - Surface enhanced spectroscopies
 - Challenging environments
