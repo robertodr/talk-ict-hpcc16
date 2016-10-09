@@ -57,6 +57,11 @@ class: split-60
 H\Psi = E\Psi
 $$`
 
+- Compute molecular energies and properties
+<p style="text-align:center;"><img src="images/pcm_openrsp.svg" style="width: 80%"></p>
+
+- Approximations needed!
+
 ]
 .column[
 <p style="text-align:center;"><img src="images/model-chem.svg" style="width: 40%"></p>
@@ -91,8 +96,41 @@ Problems
 - Conformations
 
 <font color="red">
-<center>We need to simplify!!!</center>
+<center>Once again, approximations needed!!!</center>
 </font>
+
+???
+
+---
+## Multiscale models: QM/MM
+
+- Use quantum and classical physics together:
+  * Quantum mechanics (QM) for chemically relevant subsystem
+  * Molecular mechanics (MM) for environment
+
+<p style="text-align:center;"><img src="images/pyridine+water_12AA_QMMM.png" style="width: 55%"></p>
+
+???
+
+---
+## Multiscale models: QM/Continuum
+
+- Use quantum and classical physics together:
+  * Quantum mechanics (QM) for chemically relevant subsystem
+  * Molecular mechanics (MM) for environment
+
+<p style="text-align:center;"><img src="images/pyridine_Continuum.png" style="width: 55%"></p>
+
+???
+
+---
+## Multiscale models: QM/MM/Continuum
+
+- Use quantum and classical physics together:
+  * Quantum mechanics (QM) for chemically relevant subsystem
+  * Molecular mechanics (MM) for environment
+
+<p style="text-align:center;"><img src="images/pyridine+water_12AA_QMMMContinuum.png" style="width: 55%"></p>
 
 ???
 
