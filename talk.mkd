@@ -401,7 +401,7 @@ Then one has:
 $$`
 
 <font color="red">
-<center>How to solve this? <img src="images/scream.svg" style="width: 5%"></center>
+<center>How to solve this? <img src="images/fearful.svg" style="width: 5%"></center>
 </font>
 <p style="clear: both;">
 
@@ -415,11 +415,15 @@ $$`
 
 Let \\(\varepsilon\rightarrow\infty\\), then:
 `$$
-\mathcal{S}\sigma = -\varphi
+\mathcal{S}\sigma = -f(\varepsilon)\varphi
+$$`
+accounting for dielectric conditions with:
+`$$
+f(\varepsilon) = \frac{\varepsilon -  1}{\varepsilon + x},\quad 0 \leq x \leq 1
 $$`
 
 <font color="red">
-<center>How to solve this? <img src="images/scream.svg" style="width: 5%"></center>
+<center>How to solve this? <img src="images/fearful.svg" style="width: 5%"></center>
 </font>
 <p style="clear: both;">
 
@@ -428,59 +432,225 @@ $$`
 ???
 
 ---
+layout: false
+class: split-70
 
 ## Boundary element method and PCM.red[<sup>7</sup>]
 
-- \\(\sigma\\) is the _unique solution_ to the IEF-PCM equation:
+.column[
+Solution by a boundary element method (BEM) <img src="images/smiley.svg" style="width: 5%">
+
+* \\(N_\mathrm{ts}\\) finite elements on the cavity boundary
+* Form boundary integral operators: _Galerkin_ or _collocation_ method
 `$$
-\left[\left(2\pi\mathcal{I} - \mathcal{
-  D}_\mathrm{
-  e}\right)\mathcal{
-  S}_\mathrm{i} +
-      \mathcal{
-  S}_\mathrm{
-  e}\left(2\pi\mathcal{I} + \mathcal{D}^\dagger_\mathrm{
-  i}\right) \right]\sigma =
--\left[\left(2\pi\mathcal{I} - \mathcal{
-  D}_\mathrm{
-  e}\right) -
-\mathcal{
-  S}_\mathrm{
-  e}\mathcal{
-  S}_\mathcal{i}^{
-  -1}\left(2\pi\mathcal{I} - \mathcal{
-  D}_\mathrm{
-  i}\right)\right]\varphi
+ \mathbf{T}(\varepsilon)\mathbf{q} = - \mathbf{R}\mathbf{v}
 $$`
-- Integral operators are Calderón projector components:
-`$$
- \begin{align}
-  (\mathcal{
-  S}_\star f)(\mathbf{s}) &= \int_{
-  \partial C} \mathop{}\!\mathrm{
-  d}\mathbf{s}^\prime \color{red}{
-  G(\mathbf{s}, \mathbf{s} ^\prime)}f(\mathbf{s}^\prime) \\
-  (\mathcal{
-  D}_\star f)(\mathbf{s}) &= \int_{
-  \partial C} \mathop{}\!\mathrm{
-  d}\mathbf{s}^\prime [\partial_{L_\star}^\prime\color{red}{G(\mathbf{s}, \mathbf{s}^\prime)}]f(\mathbf{s}^\prime) \\
-  (\mathcal{D}^\dagger_\star f)(\mathbf{s}) &= \int_{
-  \partial C} \mathop{}\!\mathrm{
-  d}\mathbf{s}^\prime [\partial_{
-  L_\star}\color{red}{G(\mathbf{s}, \mathbf{s}^\prime)}]f(\mathbf{s}^\prime)
- \end{
-  align}
-$$`
-- Solution by a boundary element method (BEM):
-   * Discretized cavity boundary + piecewise regular bases = finite elements
-   * Form boundary integral operators: _Galerkin_ or _collocation_ method
-   * Solve linear system: direct inversion or iterative solver
+* Solve linear system: direct inversion or iterative solver
+]
+.column[
+<p style="text-align:right;"><img src="images/benzene_GePol.png" style="width: 30%"></p>
+<p style="clear: both;">
+]
+
+- Similar equation for IEF-PCM, isotropic PCM and COSMO
+- _Independent_ of QM method!
 
 .footnote[.red[<sup>7</sup>] A. Ern and J. L. Guermond, _Theory and Practice of Finite Elements_, Springer, 2004]
 
 ???
 
 ---
+layout: false
+class: split-60
+
+## Self-Consistent Field with PCM.red[<sup>3</sup>]
+
+.column[
+* _Molecular electrostatic potential_ (MEP):
+  `$$
+  v_{I} = \sum_{\mu\nu}^{N_\mathrm{AO}} \color{blue}{v_{\mu\nu, I}} D_{\nu\mu},
+  \quad
+  \color{blue}{v_{\mu\nu, I}} = \int\mathop{}\!\mathrm{d}\mathbf{r} \frac{-\chi^*_\mu(\mathbf{r})\chi_\nu(\mathbf{r}) }{|\mathbf{r} - \mathbf{s}_I|}
+  $$`
+* _Apparent surface charge_ (ASC):
+  `$$
+   \mathbf{T}(\varepsilon)\color{red}{\mathbf{q}} = - \mathbf{R}\color{blue}{\mathbf{v}}
+  $$`
+* Fock matrix:
+  `$$
+   f_{\mu\nu} = h_{\mu\nu} +
+    \sum_{\kappa\lambda}D_{\kappa\lambda}(g_{\mu\nu\kappa\lambda} - \gamma g_{\mu\lambda\kappa\nu}) +
+    f_{\mathrm{xc}; \mu\nu} +
+    \color{green}{V_{\mu\nu}^\mathrm{PCM}}
+  $$`
+  - PCM term:
+  `$$
+    \color{green}{V_{\mu\nu}^\mathrm{PCM}} = \sum_{I=1}^{N_\mathrm{ts}}\color{red}{q_I} \color{blue}{v_{\mu\nu, I}}
+  $$`
+]
+.column[
+<p style="text-align:right;"><img src="images/algorithm.png" style="width: 35%"></p>
+<p style="clear: both;">
+]
+
+.footnote[.red[<sup>3</sup>] J. Tomasi, B. Mennucci, R. Cammi, _Chem. Rev._, __105__, 2999, (2005)]
+
+???
+
+---
+
+layout: false
+
+## Modular code development.red[<sup>8</sup>]
+
+### Examples
+
+- Lego
+- Car manufacturing
+- Design of your phone or laptop
+- Modular composition when you order a laptop
+- Success of USB
+- Study programs
+
+### Advantages
+
+- Separation of concerns
+- Composability
+- Leveraging functionality
+
+.footnote[.red[<sup>8</sup>] Reproduced from [Library design the hard way](http://cicero.xyz/v2/remark/github/bast/talk-library-design/master/talk.mkd/#1)]
+
+---
+
+## Library design in a modular world.red[<sup>8</sup>]
+
+<img src="images/joe-paradiso-modular-synth-front.png" style="width: 500px;"/>
+
+- Copyright Joe Paradiso (MIT)
+
+.footnote[.red[<sup>8</sup>] Reproduced from [Library design the hard way](http://cicero.xyz/v2/remark/github/bast/talk-library-design/master/talk.mkd/#1)]
+
+---
+
+## Must haves 1/2.red[<sup>8</sup>]
+
+### Encapsulation
+
+- Hide internals by language or by convention
+- Interface exposed in a separate file
+- Expose the "what", hide the "how"
+
+### Documentation
+
+- Separate the "what it can do" from "how is it implemented"
+- Documented _application programming interface_ (API)
+- Versioned API ([semantic](http://semver.org) or [sentimental](http://sentimentalversioning.org)
+  or [romantic](https://github.com/jashkenas/backbone/issues/2888#issuecomment-29076249) versioning)
+
+.footnote[.red[<sup>8</sup>] Reproduced from [Library design the hard way](http://cicero.xyz/v2/remark/github/bast/talk-library-design/master/talk.mkd/#1)]
+
+---
+
+## Must haves 2/2.red[<sup>8</sup>]
+
+### Testable on its own
+
+- Sharpens interfaces
+- Once you start testing your library you really see the coupling and cohesion
+
+### Built on its own
+
+- Prerequisite for testable on its own
+
+### Own development history
+
+- Decouple the development history
+- Each unit should have its own Git history/repository
+
+.footnote[.red[<sup>8</sup>] Reproduced from [Library design the hard way](http://cicero.xyz/v2/remark/github/bast/talk-library-design/master/talk.mkd/#1)]
+
+---
+
+## PCMSolver: an API for the PCM.red[<sup>9</sup>]
+
+<p style="text-align:center;"><img src="images/pcmsolver-scheme.png" style="width: 70%"></p>
+<p style="clear: both;">
+
+.footnote[.red[<sup>9</sup>] Find it at [pcmsolver.readthedocs.io](http://pcmsolver.readthedocs.io/en/latest/) and [github.com/PCMSolver/pcmsolver](https://github.com/PCMSolver/pcmsolver)]
+
+---
+
+## PCMSolver: an API for the PCM.red[<sup>9</sup>]
+
+- Open-source
+- Languages
+- Testing
+- Documentation
+
+.footnote[.red[<sup>9</sup>] Find it at [pcmsolver.readthedocs.io](http://pcmsolver.readthedocs.io/en/latest/) and [github.com/PCMSolver/pcmsolver](https://github.com/PCMSolver/pcmsolver)]
+
+---
+
+## PCMSolver: an API for the PCM.red[<sup>9</sup>]
+
+Capabilities
+
+.footnote[.red[<sup>9</sup>] Find it at [pcmsolver.readthedocs.io](http://pcmsolver.readthedocs.io/en/latest/) and [github.com/PCMSolver/pcmsolver](https://github.com/PCMSolver/pcmsolver)]
+
+---
+
+## Using PCMSolver
+
+```Fortran
+use, intrinsic :: iso_c_binding
+use pcmsolver
+type(c_ptr) :: pcm_context
+character(kind=c_char, len=1) :: mep_lbl(7) =  &
+                                 (/'N', 'u', 'c', 'M', 'E', 'P', c_null_char/)
+character(kind=c_char, len=1) :: asc_lbl(7) =  &
+                                 (/'N', 'u', 'c', 'A', 'S', 'C', c_null_char/)
+real(c_double), allocatable :: grid(:), mep(:), asc(:)
+integer(c_int) :: irrep
+integer(c_int) :: grid_size, irr_grid_size
+real(c_double) :: energy
+
+pcm_context = pcmsolver_new(PCMSOLVER_READER_OWN,           &
+                            nr_nuclei, charges, coordinates, &
+                            symmetry_info, host_input)
+call pcmsolver_print(pcm_context)
+grid_size = pcmsolver_get_cavity_size(pcm_context)
+irr_grid_size = pcmsolver_get_irreducible_cavity_size(pcm_context)
+allocate(grid(3*grid_size))
+grid = 0.0_c_double
+call pcmsolver_get_centers(pcm_context, grid)
+```
+
+---
+
+## Using PCMSolver
+
+```Fortran
+allocate(mep(grid_size))
+mep = 0.0_c_double
+mep = nuclear_mep(nr_nuclei, charges, &
+                  reshape(coordinates, (/ 3, nr_nuclei /)), &
+                  grid_size, reshape(grid, (/ 3_c_int, grid_size /)))
+call pcmsolver_set_surface_function(pcm_context, grid_size, mep, mep_lbl)
+irrep = 0_c_int
+call pcmsolver_compute_asc(pcm_context, mep_lbl, asc_lbl, irrep)
+allocate(asc(grid_size))
+asc = 0.0_c_double
+call pcmsolver_get_surface_function(pcm_context, grid_size, asc, asc_lbl)
+energy = pcmsolver_compute_polarization_energy(pcm_context, mep_lbl, asc_lbl)
+```
+
+
+---
+
+## Science with PCMSolver
+
+---
+
 layout: false
 
 ## Acknowldegements
@@ -495,8 +665,10 @@ template: inverse
 ## Thanks for your attention!
 
 Slideshow created using [remark] and served using [cicero]
-Slides available on [GitHub]
+
+Slides available on [GitHub](https://github.com/robertodr/talk-hzau)
+
+Browse slides at [http://tinyurl.com/hzh8djv](http://tinyurl.com/hzh8djv)
 
 [remark]: https://github.com/gnab/remark
 [cicero]: https://github.com/bast/cicero
-[GitHub]: https://github.com/robertodr/talk-hzau
