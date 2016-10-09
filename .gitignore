@@ -1,2 +1,4 @@
 py3-mktalk/*
+*.log
+*.aux
 
