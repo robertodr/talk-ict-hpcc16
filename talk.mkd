@@ -49,6 +49,7 @@ layout: false
 class: split-60
 
 ## Quantum Chemistry
+### **Understand** and **predict** chemistry from first principles
 
 .column[
 - Quantum many-body theory applied to chemistry
@@ -60,19 +61,32 @@ $$`
 - Compute molecular energies and properties
 <p style="text-align:center;"><img src="images/pcm_openrsp.svg" style="width: 80%"></p>
 
-- Approximations needed!
-
 ]
 .column[
 <p style="text-align:center;"><img src="images/model-chem.svg" style="width: 40%"></p>
+
+<font color="red">
+<center>Approximations needed!!!</center>
+</font>
 ]
 
 ???
 
+- Quantum chemistry is the use of physical and mathematical models based on
+  quantum many-body theory to the chemical systems.
+- We want to solve the Schrödinger equation for a many-electron system in the
+  Born--Oppenheimer approximation.
+- Knowledge of the wave function enables calculation of molecular energies and
+  properties. Most properties we have in mind are experimentally accessible by
+  spectroscopic methods: excitation energies, transition moments, vibrational
+  frequencies and so on
+- Due to the large size of the systems we are normally interested in, we need
+  approximations. Hartree--Fock, Density Functional Theory and so on.
+
 ---
 layout: false
 class: split-50
-## The Problem of Solvation
+## The Problem of Solvation.red[<sup>1</sup>]
 
 .column[
 <font color="red">
@@ -83,43 +97,119 @@ Solvent effects
 - Local field
 - Dynamic
 - Specific
+- Free energy:
+  `$$ G = G_\mathrm{el} + G_\mathrm{dis} + G_\mathrm{rep} + G_\mathrm{Mm}(T) $$`
+
+**Balanced description** needed to reproduce/predict experiments!
+
 ]
 .column[
 <p style="text-align:center;"><img src="images/pyridine+water_12AA_QM.png" style="width: 45%"></p>
+<p style="clear: both;">
 ]
 
 <font color="red">
 Problems
 </font>
 
-- Size
-- Conformations
+- Size \\(\Leftrightarrow\\) accurate _ab initio_ not possible
+- Conformations \\(\Leftrightarrow\\) statistical sampling
+
+.footnote[.red[<sup>1</sup>]C. Reichardt and T. Welton, _Solvent and Solvent Effects in Organic Chemistry_, Wiley, 2010]
+
+???
+
+- Chemistry is a wet science: experiments mostly happen in solution.
+- We can classify solvent effects as:
+  * Direct: these effects stem straightforwardly from the modification
+    underwent by the solute electronic density when interacting with the
+    environment.
+  * Indirect: it is common for solutes to exhibit different minimum-energy
+    conformations in different environments. These effects are commonly
+    labelled as indirect.
+  * Local field: light-matter interactions are also affected by the
+    environment. Local modifications of externally applied fields subtly
+    influence molecular responses.
+  * Dynamic: the presence of the environment radically influences excited
+    states, since relaxation processes in the medium become important.
+  * Specific:  This catch-all category includes all effects stemming from the
+    peculiar solute-solvent pair interactions that cannot be fully described
+    under any of the previous labels. In general, modelling such effects
+    demands an atomistic level of detail.
+- Size is a huge problem. It is simply not possible to model large systems very
+  accurately.
+- Moreover, the conformational space is very large and needs to be sampled
+  extensively to have meaningful results.
+- Energy decomposition.
 
 <font color="red">
 <center>Once again, approximations needed!!!</center>
 </font>
 
-???
-
 ---
-## Multiscale models: QM/MM
+layout: false
+class: split-50
+## Multiscale models.red[<sup>2</sup>]
 
-- Use quantum and classical physics together:
+- Use **quantum** and **classical** physics together:
   * Quantum mechanics (QM) for chemically relevant subsystem
-  * Molecular mechanics (MM) for environment
+  * Molecular mechanics (MM) for the environment
 
-<p style="text-align:center;"><img src="images/pyridine+water_12AA_QMMM.png" style="width: 55%"></p>
+.column[
+<p style="text-align:center;"><img src="images/gfp_barrel.png" style="width: 100%"></p>
+]
+.column[
+<p style="text-align:center;"><img src="images/pyridine+water_12AA_QMMM.png" style="width: 50%"></p>
+]
+
+.footnote[.red[<sup>2</sup>] H. M. Senn, W. Thiel, _Angew. Chem. Int. Ed. Engl._, __48__, 1198, (2009)]
 
 ???
 
+- The idea of multiscale models is to _focus_ on the chemically relevant part
+  of the system and treat the environment approximately.
+
 ---
-## Multiscale models: QM/Continuum
+layout: false
+class: split-50
+## QM/MM.red[<sup>2</sup>]
+
+- Use **quantum** and **classical** physics together:
+  * Quantum mechanics (QM) for chemically relevant subsystem
+  * Molecular mechanics (MM) for the environment
+
+.column[
+- Environment as _classical multipoles_
+  * Nonpolarizable MM $\Rightarrow$ no polarization!
+  * Polarizable MM $\Rightarrow$ self-consistent polarization
+- Dispersion and repulsion approximate
+- Statistical sampling and averaging
+- MM region _cutoff radius_?
+]
+.column[
+<p style="text-align:center;"><img src="images/pyridine+water_12AA_QMMM.png" style="width: 50%"></p>
+]
+
+.footnote[.red[<sup>2</sup>] H. M. Senn, W. Thiel, _Angew. Chem. Int. Ed. Engl._, __48__, 1198, (2009)]
+
+???
+
+- Nonpolarizable MM only has static multipoles. Thus no polarization.
+- Polarizable MM has static multipoles + polarizable dipoles.
+- Dispersion and repulsion added as classical force fields (Lennard--Jones)
+- Run MD simulation to obtain snapshots. Run QM/MM. Average.
+- How large does the MM region need to be?
+
+---
+## QM/Continuum.red[<sup>3</sup>]
 
 - Use quantum and classical physics together:
   * Quantum mechanics (QM) for chemically relevant subsystem
   * Molecular mechanics (MM) for environment
 
 <p style="text-align:center;"><img src="images/pyridine_Continuum.png" style="width: 55%"></p>
+
+.footnote[.red[<sup>3</sup>] J. Tomasi, B. Mennucci, R. Cammi, _Chem. Rev._, __105__, 2999, (2005)]
 
 ???
 
