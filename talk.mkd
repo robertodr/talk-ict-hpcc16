@@ -91,7 +91,7 @@ $$`
 ---
 layout: false
 class: split-50
-## The Problem of Solvation.red[<sup>1</sup>]
+## The Problem of Solvation
 
 .column[
 <font color="red">
@@ -107,7 +107,6 @@ Solvent effects
   `$$ G = G_\mathrm{el} + G_\mathrm{dis} + G_\mathrm{rep} + G_\mathrm{Mm}(T) $$`
 
 **Balanced description** needed to reproduce/predict experiments!
-
 ]
 .column[
 <p style="text-align:center;"><img src="images/pyridine+water_12AA_QM.png" style="width: 45%"></p>
@@ -121,8 +120,6 @@ Problems
 
 - Size \\(\Leftrightarrow\\) accurate _ab initio_ not possible
 - Conformations \\(\Leftrightarrow\\) statistical sampling
-
-.footnote[.red[<sup>1</sup>]C. Reichardt and T. Welton, _Solvent and Solvent Effects in Organic Chemistry_, Wiley, 2010]
 
 ???
 
@@ -157,7 +154,7 @@ Problems
 ---
 layout: false
 class: split-50
-## Multiscale models.red[<sup>2</sup>]
+## Multiscale models.red[<sup>1</sup>]
 
 - Use **quantum** and **classical** physics together:
   * quantum for chemically relevant subsystem
@@ -172,7 +169,7 @@ class: split-50
 <p style="clear: both;">
 ]
 
-.footnote[.red[<sup>2</sup>] H. M. Senn, W. Thiel, _Angew. Chem. Int. Ed. Engl._, __48__, 1198, (2009)]
+.footnote[.red[<sup>1</sup>] H. M. Senn, W. Thiel, _Angew. Chem. Int. Ed. Engl._, __48__, 1198, (2009)]
 
 ???
 
@@ -201,7 +198,7 @@ class: split-60
 <p style="clear: both;">
 ]
 
-.footnote[.red[<sup>2</sup>] H. M. Senn, W. Thiel, _Angew. Chem. Int. Ed. Engl._, __48__, 1198, (2009)]
+.footnote[.red[<sup>1</sup>] H. M. Senn, W. Thiel, _Angew. Chem. Int. Ed. Engl._, __48__, 1198, (2009)]
 
 ???
 
@@ -215,7 +212,7 @@ class: split-60
 layout: false
 class: split-60
 
-## QM/Continuum.red[<sup>3</sup>]
+## QM/Continuum.red[<sup>2</sup>]
 
 - Use **quantum** and **classical** physics together:
   * quantum for chemically relevant subsystem
@@ -233,7 +230,7 @@ class: split-60
 <p style="clear: both;">
 ]
 
-.footnote[.red[<sup>3</sup>] J. Tomasi, B. Mennucci, R. Cammi, _Chem. Rev._, __105__, 2999, (2005)]
+.footnote[.red[<sup>2</sup>] J. Tomasi, B. Mennucci, R. Cammi, _Chem. Rev._, __105__, 2999, (2005)]
 
 ???
 
@@ -241,7 +238,7 @@ class: split-60
 layout: false
 class: split-60
 
-## Best of both worlds: QM/MM/Continuum.red[<sup>4</sup>]
+## Best of both worlds: QM/MM/Continuum.red[<sup>3</sup>]
 
 - Use **quantum** and **classical** physics together:
   * quantum for chemically relevant subsystem
@@ -260,7 +257,7 @@ class: split-60
 <p style="clear: both;">
 ]
 
-.footnote[.red[<sup>4</sup>] A. H. Steindal, K. Ruud, L. Frediani, K. Aidas, J. Kongsted, _J. Phys. Chem. B_, __115__, 3027, (2011)]
+.footnote[.red[<sup>3</sup>] A. H. Steindal, K. Ruud, L. Frediani, K. Aidas, J. Kongsted, _J. Phys. Chem. B_, __115__, 3027, (2011)]
 
 ???
 
@@ -268,7 +265,7 @@ class: split-60
 layout: false
 class: split-60
 
-## QM/Continuum: the polarizable continuum model.red[<sup>3</sup>]
+## QM/Continuum: the polarizable continuum model.red[<sup>2</sup>]
 
 .column[
 - Replace environment with continuum \\(\varepsilon\\)
@@ -292,7 +289,7 @@ $$`
 <p style="clear: both;">
 ]
 
-.footnote[.red[<sup>3</sup>] J. Tomasi, B. Mennucci, R. Cammi, _Chem. Rev._, __105__, 2999, (2005)]
+.footnote[.red[<sup>2</sup>] J. Tomasi, B. Mennucci, R. Cammi, _Chem. Rev._, __105__, 2999, (2005)]
 
 ???
 
@@ -302,7 +299,7 @@ $$`
 - Notice that the solvent parameters are, _by definition_, averaged!
 
 ---
-## Mathematics of PCM.red[<sup>5</sup>]
+## Mathematics of PCM.red[<sup>4</sup>]
 
 - Transmission problem, find \\(u\\) such that:
 `$$
@@ -325,9 +322,8 @@ $$`
  = \int_C \mathop{}\!\mathrm{d}\mathbf{r}^\prime \frac{\rho(\mathbf{r}^\prime)}{|\mathbf{r} - \mathbf{r}^\prime|} +
   \int_{\partial C} \mathop{}\!\mathrm{d}\mathbf{s} \frac{\color{red}{\sigma(\mathbf{s})}}{|\mathbf{r} - \mathbf{s}|}
 $$`
-- Find its _representation_ inside the cavity
 
-.footnote[.red[<sup>5</sup>] E. Cancès, B. Mennucci, _J. Math. Chem._, __23__, 309, (1998)]
+.footnote[.red[<sup>4</sup>] E. Cancès, B. Mennucci, _J. Math. Chem._, __23__, 309, (1998)]
 
 ???
 
@@ -340,14 +336,15 @@ $$`
 
 ---
 
-## Mathematics of PCM, contd..red[<sup>6</sup>]
+## Mathematics of PCM, contd..red[<sup>5</sup>]
 
-- \\(\sigma\\) is the _unique solution_ to the IEF-PCM equation:
+_Apparent surface charge_ (ASC):
+- _Unique solution_ to the IEF-PCM equation:
 `$$
 \left[\left(2\pi\mathcal{I} - \mathcal{D}_\mathrm{e}\right)\mathcal{S}_\mathrm{i} +
-      \mathcal{S}_\mathrm{e}\left(2\pi\mathcal{I} + \mathcal{D}^\dagger_\mathrm{i}\right) \right]\sigma =
+      \mathcal{S}_\mathrm{e}\left(2\pi\mathcal{I} + \mathcal{D}^\dagger_\mathrm{i}\right) \right]\color{red}{\sigma} =
 -\left[\left(2\pi\mathcal{I} - \mathcal{D}_\mathrm{e}\right) -
-\mathcal{S}_\mathrm{e}\mathcal{S}_\mathcal{i}^{-1}\left(2\pi\mathcal{I} - \mathcal{D}_\mathrm{i}\right)\right]\varphi
+\mathcal{S}_\mathrm{e}\mathcal{S}_\mathcal{i}^{-1}\left(2\pi\mathcal{I} - \mathcal{D}_\mathrm{i}\right)\right]\color{blue}{\varphi}
 $$`
 - Integral operators are Calderón projector components:
 `$$
@@ -366,7 +363,7 @@ $$`
 </font>
 <p style="clear: both;">
 
-.footnote[.red[<sup>6</sup>] S. A. Sauter and C. Schwab, _Boundary Element Methods_, Springer, 2011]
+.footnote[.red[<sup>5</sup>] S. A. Sauter and C. Schwab, _Boundary Element Methods_, Springer, 2011]
 
 ???
 
@@ -379,7 +376,7 @@ $$`
 
 ---
 
-## Isotropic PCM.red[<sup>3</sup>]
+## Isotropic PCM.red[<sup>2</sup>]
 
 Assume _homogeneous_ and _isotropic_ dielectric, \\(\varepsilon\\)
 `$$
@@ -396,8 +393,8 @@ $$`
 Then one has:
 `$$
 \left[ 2\pi \left(\frac{\varepsilon+1}{\varepsilon-1}\right) - \mathcal{D}\right]
-\mathcal{S}\sigma = -\left( 2\pi - \mathcal{D} \right)
-\varphi
+\mathcal{S}\color{red}{\sigma} = -\left( 2\pi - \mathcal{D} \right)
+\color{blue}{\varphi}
 $$`
 
 <font color="red">
@@ -405,17 +402,17 @@ $$`
 </font>
 <p style="clear: both;">
 
-.footnote[.red[<sup>3</sup>] J. Tomasi, B. Mennucci, R. Cammi, _Chem. Rev._, __105__, 2999, (2005)]
+.footnote[.red[<sup>2</sup>] J. Tomasi, B. Mennucci, R. Cammi, _Chem. Rev._, __105__, 2999, (2005)]
 
 ???
 
 ---
 
-## COnductor-like Screening MOdel (COSMO).red[<sup>3</sup>]
+## COnductor-like Screening MOdel (COSMO).red[<sup>2</sup>]
 
 Let \\(\varepsilon\rightarrow\infty\\), then:
 `$$
-\mathcal{S}\sigma = -f(\varepsilon)\varphi
+\mathcal{S}\color{red}{\sigma} = -f(\varepsilon)\color{blue}{\varphi}
 $$`
 accounting for dielectric conditions with:
 `$$
@@ -427,7 +424,7 @@ $$`
 </font>
 <p style="clear: both;">
 
-.footnote[.red[<sup>3</sup>] J. Tomasi, B. Mennucci, R. Cammi, _Chem. Rev._, __105__, 2999, (2005)]
+.footnote[.red[<sup>2</sup>] J. Tomasi, B. Mennucci, R. Cammi, _Chem. Rev._, __105__, 2999, (2005)]
 
 ???
 
@@ -435,7 +432,7 @@ $$`
 layout: false
 class: split-70
 
-## Boundary element method and PCM.red[<sup>7</sup>]
+## Boundary element method and PCM.red[<sup>6</sup>]
 
 .column[
 Solution by a boundary element method (BEM) <img src="images/smiley.svg" style="width: 5%">
@@ -443,7 +440,7 @@ Solution by a boundary element method (BEM) <img src="images/smiley.svg" style="
 * \\(N_\mathrm{ts}\\) finite elements on the cavity boundary
 * Form boundary integral operators: _Galerkin_ or _collocation_ method
 `$$
- \mathbf{T}(\varepsilon)\mathbf{q} = - \mathbf{R}\mathbf{v}
+ \mathbf{T}(\varepsilon)\color{red}{\mathbf{q}} = - \mathbf{R}\color{blue}{\mathbf{v}}
 $$`
 * Solve linear system: direct inversion or iterative solver
 ]
@@ -455,7 +452,7 @@ $$`
 - Similar equation for IEF-PCM, isotropic PCM and COSMO
 - _Independent_ of QM method!
 
-.footnote[.red[<sup>7</sup>] A. Ern and J. L. Guermond, _Theory and Practice of Finite Elements_, Springer, 2004]
+.footnote[.red[<sup>6</sup>] A. Ern and J. L. Guermond, _Theory and Practice of Finite Elements_, Springer, 2004]
 
 ???
 
@@ -463,7 +460,7 @@ $$`
 layout: false
 class: split-60
 
-## Self-Consistent Field with PCM.red[<sup>3</sup>]
+## Self-Consistent Field with PCM.red[<sup>2</sup>]
 
 .column[
 * _Molecular electrostatic potential_ (MEP):
@@ -493,7 +490,7 @@ class: split-60
 <p style="clear: both;">
 ]
 
-.footnote[.red[<sup>3</sup>] J. Tomasi, B. Mennucci, R. Cammi, _Chem. Rev._, __105__, 2999, (2005)]
+.footnote[.red[<sup>2</sup>] J. Tomasi, B. Mennucci, R. Cammi, _Chem. Rev._, __105__, 2999, (2005)]
 
 ???
 
@@ -501,7 +498,7 @@ class: split-60
 
 layout: false
 
-## Modular code development.red[<sup>8</sup>]
+## Modular code development.red[<sup>7</sup>]
 
 ### Examples
 
@@ -518,21 +515,22 @@ layout: false
 - Composability
 - Leveraging functionality
 
-.footnote[.red[<sup>8</sup>] Reproduced from [Library design the hard way](http://cicero.xyz/v2/remark/github/bast/talk-library-design/master/talk.mkd/#1)]
+.footnote[.red[<sup>7</sup>] Reproduced from [Library design the hard way](http://cicero.xyz/v2/remark/github/bast/talk-library-design/master/talk.mkd/#1)]
 
 ---
 
-## Library design in a modular world.red[<sup>8</sup>]
+## Library design in a modular world.red[<sup>7</sup>]
 
-<img src="images/joe-paradiso-modular-synth-front.png" style="width: 500px;"/>
+<p style="text-align:center;"><img src="images/joe-paradiso-modular-synth-front.png" style="width: 500px;"/></p>
+<p style="clear: both;">
 
 - Copyright Joe Paradiso (MIT)
 
-.footnote[.red[<sup>8</sup>] Reproduced from [Library design the hard way](http://cicero.xyz/v2/remark/github/bast/talk-library-design/master/talk.mkd/#1)]
+.footnote[.red[<sup>7</sup>] Reproduced from [Library design the hard way](http://cicero.xyz/v2/remark/github/bast/talk-library-design/master/talk.mkd/#1)]
 
 ---
 
-## Must haves 1/2.red[<sup>8</sup>]
+## Must haves 1/2.red[<sup>7</sup>]
 
 ### Encapsulation
 
@@ -547,11 +545,11 @@ layout: false
 - Versioned API ([semantic](http://semver.org) or [sentimental](http://sentimentalversioning.org)
   or [romantic](https://github.com/jashkenas/backbone/issues/2888#issuecomment-29076249) versioning)
 
-.footnote[.red[<sup>8</sup>] Reproduced from [Library design the hard way](http://cicero.xyz/v2/remark/github/bast/talk-library-design/master/talk.mkd/#1)]
+.footnote[.red[<sup>7</sup>] Reproduced from [Library design the hard way](http://cicero.xyz/v2/remark/github/bast/talk-library-design/master/talk.mkd/#1)]
 
 ---
 
-## Must haves 2/2.red[<sup>8</sup>]
+## Must haves 2/2.red[<sup>7</sup>]
 
 ### Testable on its own
 
@@ -567,39 +565,102 @@ layout: false
 - Decouple the development history
 - Each unit should have its own Git history/repository
 
-.footnote[.red[<sup>8</sup>] Reproduced from [Library design the hard way](http://cicero.xyz/v2/remark/github/bast/talk-library-design/master/talk.mkd/#1)]
+.footnote[.red[<sup>7</sup>] Reproduced from [Library design the hard way](http://cicero.xyz/v2/remark/github/bast/talk-library-design/master/talk.mkd/#1)]
 
 ---
 
-## PCMSolver: an API for the PCM.red[<sup>9</sup>]
+## PCMSolver: an API for the PCM.red[<sup>8</sup>]
 
-<p style="text-align:center;"><img src="images/pcmsolver-scheme.png" style="width: 70%"></p>
+- Open-source licensed (LGPLv3)
+- Developed on [GitHub](https://github.com/PCMSolver/pcmsolver)
+- C++ project (~5000 LOC) Fortran (~3000 LOC)
+<p style="text-align:center;"><img src="images/pcmsolver-scheme.png" style="width: 60%"></p>
 <p style="clear: both;">
 
-.footnote[.red[<sup>9</sup>] Find it at [pcmsolver.readthedocs.io](http://pcmsolver.readthedocs.io/en/latest/) and [github.com/PCMSolver/pcmsolver](https://github.com/PCMSolver/pcmsolver)]
+.footnote[.red[<sup>8</sup>] Find it at [pcmsolver.readthedocs.io](http://pcmsolver.readthedocs.io/en/latest/) and [github.com/PCMSolver/pcmsolver](https://github.com/PCMSolver/pcmsolver)]
 
 ---
 
-## PCMSolver: an API for the PCM.red[<sup>9</sup>]
+## PCMSolver: an API for the PCM.red[<sup>8</sup>]
 
-- Open-source
-- Languages
+- Capabilities
+  * Traditional collocation solvers
+  * Isotropic and anisotropic Green's functions
+  * Wavelet solvers _in progress_
+  * Real-time solvers _in progress_
+
+- Build system
+  * [CMake](https://cmake.org/) _via_ [Autocmake](http://autocmake.readthedocs.io/en/latest/)
+  * Static and shared libraries available
+
+- API
+  * Pure C for interoperability
+  * Fortran bindings built on-demand
+
+.footnote[.red[<sup>8</sup>] Find it at [pcmsolver.readthedocs.io](http://pcmsolver.readthedocs.io/en/latest/) and [github.com/PCMSolver/pcmsolver](https://github.com/PCMSolver/pcmsolver)]
+
+---
+
+## PCMSolver: an API for the PCM.red[<sup>8</sup>]
+
 - Testing
-- Documentation
+  * Use [Catch](https://github.com/philsquared/Catch) C++ framework
+  * The `master` branch has 51 tests
+  * _Continuous integration_ (CI) on [Travis](https://travis-ci.org/) and [Magnum](https://magnum-ci.com/)
 
-.footnote[.red[<sup>9</sup>] Find it at [pcmsolver.readthedocs.io](http://pcmsolver.readthedocs.io/en/latest/) and [github.com/PCMSolver/pcmsolver](https://github.com/PCMSolver/pcmsolver)]
+- Release process
+  * Public repo on GitHub
+  * Private repo on GitLab
+  * Precompiled library served on [Anaconda cloud](https://anaconda.org/psi4/pcmsolver)
+
+- Documented:
+  * Doxygen for _in-code_ documentation
+  * Sphinx for users and programmers documentation
+  * Served on [ReadTheDocs](https://readthedocs.org/)
+
+.footnote[.red[<sup>8</sup>] Find it at [pcmsolver.readthedocs.io](http://pcmsolver.readthedocs.io/en/latest/) and [github.com/PCMSolver/pcmsolver](https://github.com/PCMSolver/pcmsolver)]
 
 ---
 
-## PCMSolver: an API for the PCM.red[<sup>9</sup>]
+## Interfaces to QM programs
 
-Capabilities
+- DALTON (w/ A. H. Steindal, K. Ruud, M. Ringholm _et al._)
+  * HF and DFT up to linear electric response properties
+  * Interfaced also to open-ended response code (only electric)
+  * Status: **unreleased**
 
-.footnote[.red[<sup>9</sup>] Find it at [pcmsolver.readthedocs.io](http://pcmsolver.readthedocs.io/en/latest/) and [github.com/PCMSolver/pcmsolver](https://github.com/PCMSolver/pcmsolver)]
+- LSDALTON (w/ S. S. Reine)
+  * HF and DFT up to linear electric response properties
+  * Status: **released**
+
+- Psi4 (w/ T. Daniel Crawford, A. Simmonett, L. A. Burns)
+  * HF and DFT
+  * Status: **released**
+
+---
+
+## Interfaces to QM programs, contd.
+
+- DIRAC (w/ T. Saue)
+  * 4-component, Kramers restricted, HF and DFT up to linear static electric response properties
+  * Status: **released**
+
+- ReSpect (w/ M. Repisky, S. Komorowsky, K. Ruud, S. Pipolo)
+  * 4-component, Kramers restricted and unrestricted HF and DFT
+  * Real-time propagation _in progress_
+  * Status: **unreleased**
+
+- KOALA (w/ S. Höfener)
+  * Subsystem DFT up to linear electric response properties
+  * Status: **unreleased**
 
 ---
 
 ## Using PCMSolver
+
+[Context-aware](https://github.com/bast/context-api-example) API
+  * Confine state to module
+  * Multiple contexts possible
 
 ```Fortran
 use, intrinsic :: iso_c_binding
@@ -617,33 +678,49 @@ real(c_double) :: energy
 pcm_context = pcmsolver_new(PCMSOLVER_READER_OWN,           &
                             nr_nuclei, charges, coordinates, &
                             symmetry_info, host_input)
+```
+
+---
+
+## Using PCMSolver, contd.
+
+[Context-aware](https://github.com/bast/context-api-example) API
+  * Operations require context
+  * Enforce namespacing by convention
+  * `get` and `set` functions
+
+```Fortran
 call pcmsolver_print(pcm_context)
 grid_size = pcmsolver_get_cavity_size(pcm_context)
 irr_grid_size = pcmsolver_get_irreducible_cavity_size(pcm_context)
 allocate(grid(3*grid_size))
-grid = 0.0_c_double
+grid = 0.0d0
 call pcmsolver_get_centers(pcm_context, grid)
 ```
 
 ---
 
-## Using PCMSolver
+## Using PCMSolver, contd.
+
+[Surface functions](http://pcmsolver.readthedocs.io/en/latest/users/interfacing.html#how-pcmsolver-handles-potentials-and-charges-surface-functions)
+  * PCM \\(\Leftrightarrow\\) functions defined on cavity surface
+  * Function label + function data = surface function
+  * Map of labels and data
 
 ```Fortran
 allocate(mep(grid_size))
-mep = 0.0_c_double
+mep = 0.0d0
 mep = nuclear_mep(nr_nuclei, charges, &
                   reshape(coordinates, (/ 3, nr_nuclei /)), &
-                  grid_size, reshape(grid, (/ 3_c_int, grid_size /)))
+                  grid_size, reshape(grid, (/ 3, grid_size /)))
 call pcmsolver_set_surface_function(pcm_context, grid_size, mep, mep_lbl)
-irrep = 0_c_int
+irrep = 0
 call pcmsolver_compute_asc(pcm_context, mep_lbl, asc_lbl, irrep)
 allocate(asc(grid_size))
-asc = 0.0_c_double
+asc = 0.0d0
 call pcmsolver_get_surface_function(pcm_context, grid_size, asc, asc_lbl)
 energy = pcmsolver_compute_polarization_energy(pcm_context, mep_lbl, asc_lbl)
 ```
-
 
 ---
 
