@@ -362,7 +362,7 @@ $$`
 $$`
 
 <font color="red">
-<center>How to solve this? <img src="images/scream.svg" style="width: 5%"></center>
+<center>How to solve this? <img src="images/fearful.svg" style="width: 5%"></center>
 </font>
 <p style="clear: both;">
 
