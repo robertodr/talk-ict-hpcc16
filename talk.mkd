@@ -723,8 +723,92 @@ energy = pcmsolver_compute_polarization_energy(pcm_context, mep_lbl, asc_lbl)
 ```
 
 ---
+layout: false
+class: split-50
 
-## Science with PCMSolver
+## Solvation in the Relativistic Regime.red[<sup>*</sup>]
+
+`$$
+\mathbf{F} = \begin{pmatrix}
+\mathbf{F}^{LL, \mathrm{vac}} + \mathbf{q}\cdot\mathbf{v}^{LL} & \mathbf{F}^{LS, \mathrm{vac}} \\
+\mathbf{F}^{SL, \mathrm{vac}} & \mathbf{F}^{SS, \mathrm{vac}} + \mathbf{q}\cdot\mathbf{v}^{SS}
+\end{pmatrix}
+$$`
+- Extended to EPR and pNMR parameters (ReSpect)
+
+.column[
+<p style="text-align:center;"><img src="images/H2O_MEP-diff-pcmdc-dc.png" style="width: 75%"></p>
+<p style="clear: both;">
+]
+.column[
+<p style="text-align:center;"><img src="images/H2Po_MEP-diff-pcmdc-dc.png" style="width: 40%"></p>
+<p style="clear: both;">
+]
+
+.footnote[.red[<sup>*</sup>] R. Di Remigio, R. Bast, L. Frediani, T. Saue, _J. Phys. Chem. A_, __119__, 5061, (2015)]
+
+---
+
+## Using Wavelets for the PCM.red[<sup>*</sup>]
+
+.footnote[.red[<sup>*</sup>] M. Bugeanu, R. Di Remigio, K. Mozgawa, S. S. Reine, H. Harbrecht, L. Frediani, _PCCP_, __17__, 31566, (2015)]
+
+- Sparse representation <img src="images/smiley.svg" style="width: 4%">
+- Linear memory and time cost <img src="images/smiley.svg" style="width: 4%">
+- Huge number of surface points <img src="images/scream.svg" style="width: 4%">
+
+--
+
+<div class="imageWrapper">
+  <img class="overlayImage" src="images/a_2_l_0_5_fs.png" style="width: 90%" align="middle">
+--
+  <img class="overlayImage" src="images/alpha_convergence.png" style="width: 75%" align="middle">
+</div>
+<p style="clear: both;">
+
+???
+
+- Use wavelet Galerkin BEM for PCM
+
+---
+layout: false
+class: split-50
+
+## Spherical Diffuse Interfaces.red[<sup>*</sup>]
+
+.footnote[.red[<sup>*</sup>] R. Di Remigio, K. Mozgawa, H. Cao, V. Weijo, L. Frediani, _J. Chem. Phys._, __144__, 124103, (2016)]
+
+- Modelling of nonhomogeneous environments
+- Numerical Green's function
+
+.column[
+<p style="text-align:center;"><img src="images/acetone_normal.jpg" style="width: 100%"></p>
+<p style="clear: both;">
+]
+.column[
+<p style="text-align:center;"><img src="images/permittivity_profiles.jpg" style="width: 50%"></p>
+<p style="clear: both;">
+]
+
+---
+layout: false
+class: split-50
+
+## Spherical Diffuse Interfaces.red[<sup>*</sup>]
+
+.footnote[.red[<sup>*</sup>] R. Di Remigio, K. Mozgawa, H. Cao, V. Weijo, L. Frediani, _J. Chem. Phys._, __144__, 124103, (2016)]
+
+- Modelling of nonhomogeneous environments
+- Numerical Green's function
+
+.column[
+<p style="text-align:center;"><img src="images/dipole-acetone-perp-water_vapor-width.jpg" style="width: 85%"></p>
+<p style="clear: both;">
+]
+.column[
+<p style="text-align:center;"><img src="images/dipole-acetone-perp-water_vapor-curvature.jpg" style="width: 45%"></p>
+<p style="clear: both;">
+]
 
 ---
 
