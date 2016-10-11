@@ -103,7 +103,8 @@ Solvent effects
 - Local field
 - Dynamic
 - Specific
-- Free energy:
+
+Free energy:
   `$$ G = G_\mathrm{el} + G_\mathrm{dis} + G_\mathrm{rep} + G_\mathrm{Mm}(T) $$`
 
 **Balanced description** needed to reproduce/predict experiments!
