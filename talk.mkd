@@ -461,7 +461,7 @@ class: split-50
 ### Building and deploying
 
 - Prerequisite for testable on its own
--
+- Suitable distribution mechanisms
 
 .footnote[.red[<sup>6</sup>] Reproduced from [Library design the hard way](http://cicero.xyz/v2/remark/github/bast/talk-library-design/master/talk.mkd/#1)]
 
