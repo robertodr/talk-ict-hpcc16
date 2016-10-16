@@ -465,11 +465,17 @@ class: split-50
 
 .footnote[.red[<sup>6</sup>] Reproduced from [Library design the hard way](http://cicero.xyz/v2/remark/github/bast/talk-library-design/master/talk.mkd/#1)]
 
+???
+
+- It helps catch bugs (see pic)
+- It helps define **what** the library does
+- It helps define **input** and **output** to and from the library
+
 ---
 
 ## PCMSolver: an API for the PCM.red[<sup>7</sup>]
 
-- Open-source licensed (LGPLv3)
+- Open-source [LGPLv3](https://www.gnu.org/copyleft/lesser.html)-licensed
 - Developed on [GitHub](https://github.com/PCMSolver/pcmsolver)
 - C++ (~5000 LOC) and Fortran (~3000 LOC)
 <p style="text-align:center;"><img src="images/pcmsolver-scheme.png" style="width: 60%"></p>
@@ -557,8 +563,9 @@ class: split-50
 ## Using PCMSolver
 
 [Context-aware](https://github.com/bast/context-api-example) API
-  * _Opaque_ handle to complex initialization operations
-  * Confine state to module
+  * _Opaque_ handle
+  * Confine **state** to library
+  * Hide initialization/finalization operations
   * Multiple contexts possible
 
 ```C
@@ -571,7 +578,8 @@ typedef struct pcmsolver_context_t pcmsolver_context_t;
 ## Using PCMSolver, contd.
 
 [Context-aware](https://github.com/bast/context-api-example) API
- * Initialization
+
+#### Initialization
 
 ```C++
 #ifndef AS_TYPE
@@ -586,7 +594,7 @@ pcmsolver_context_t * pcmsolver_new(pcmsolver_reader_t input_reading, int
         nr_nuclei, charges, coordinates, symmetry_info, *host_input));
 }
 ```
- * Finalization
+#### Finalization
 
 ```C++
 void pcmsolver_delete(pcmsolver_context_t * context)
